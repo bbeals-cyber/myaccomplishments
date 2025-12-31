@@ -1,195 +1,10 @@
 import React, { useMemo, useState } from "react";
-import { motion } from "framer-motion";
-import {
-  Shield,
-  Lock,
-  Server,
-  Award,
-  FileText,
-  CheckCircle2,
-  Mail,
-  Linkedin,
-  Github,
-  ExternalLink,
-  ChevronRight,
-  Search,
-  MapPin,
-  Briefcase,
-  Rocket,
-  Fingerprint,
-  Radar,
-} from "lucide-react";
 
 /**
  * Professional, single-file React homepage.
- * Styling: Tailwind (available in ChatGPT preview environment).
- * Replace placeholder content (marked with TODO) with your real details.
+ * Styling: Tailwind.
+ * Note: This version avoids external icon/animation libraries to prevent build-time network fetch errors.
  */
-
-const Section = ({ id, title, subtitle, children }) => (
-  <section id={id} className="scroll-mt-24">
-    <div className="flex items-end justify-between gap-4">
-      <div>
-        <h2 className="text-xl md:text-2xl font-semibold tracking-tight text-slate-900">{title}</h2>
-        {subtitle ? (
-          <p className="mt-2 text-sm md:text-base text-slate-600 max-w-3xl">{subtitle}</p>
-        ) : null}
-      </div>
-    </div>
-    <div className="mt-6">{children}</div>
-  </section>
-);
-
-const Pill = ({ children }) => (
-  <span className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1 text-xs font-medium text-slate-700 shadow-sm">
-    {children}
-  </span>
-);
-
-const Card = ({ children, className = "" }) => (
-  <div
-    className={`rounded-2xl border border-slate-200 bg-white/90 shadow-sm backdrop-blur supports-[backdrop-filter]:bg-white/70 ${className}`}
-  >
-    {children}
-  </div>
-);
-
-const Button = ({ as = "a", href, onClick, children, variant = "primary" }) => {
-  const base =
-    "inline-flex items-center justify-center gap-2 rounded-2xl px-4 py-2 text-sm font-semibold transition active:scale-[0.99]";
-  const styles =
-    variant === "primary"
-      ? "bg-slate-900 text-white hover:bg-slate-800"
-      : variant === "ghost"
-        ? "bg-white text-slate-900 border border-slate-200 hover:bg-slate-50"
-        : "bg-slate-50 text-slate-900 border border-slate-200 hover:bg-slate-100";
-
-  const Comp = as;
-  return (
-    <Comp className={`${base} ${styles}`} href={href} onClick={onClick}>
-      {children}
-    </Comp>
-  );
-};
-
-const IconBadge = ({ icon: Icon, label }) => (
-  <div className="flex items-center gap-3">
-    <div className="h-10 w-10 rounded-2xl bg-slate-900 text-white flex items-center justify-center shadow-sm">
-      <Icon className="h-5 w-5" aria-hidden="true" />
-    </div>
-    <div>
-      <div className="text-sm font-semibold text-slate-900">{label}</div>
-    </div>
-  </div>
-);
-
-const Metric = ({ value, label }) => (
-  <div className="rounded-2xl border border-slate-200 bg-white px-4 py-3 shadow-sm">
-    <div className="text-lg font-semibold text-slate-900">{value}</div>
-    <div className="text-xs text-slate-600">{label}</div>
-  </div>
-);
-
-const experience = [
-  {
-    role: "Cybersecurity Consultant / Security Engineer",
-    company: "Managed Security Services Provider (MSSP)",
-    time: "YYYY – Present",
-    location: "Remote / New York, USA",
-    highlights: [
-      "Led security assessments and maturity evaluations across access control, incident response, vulnerability management, and secure configuration domains.",
-      "Designed pragmatic remediation roadmaps aligned to NIST/CMMC-style controls, balancing operational constraints with risk reduction.",
-      "Partnered with stakeholders (IT, leadership, vendors) to implement MFA, least privilege, logging/monitoring, and hardened baselines.",
-    ],
-    tags: ["Risk Assessments", "Hardening", "MFA", "Logging/SIEM", "Policy & Procedures"],
-  },
-  // TODO: Add prior roles
-];
-
-const projects = [
-  {
-    title: "Compliance Program Build-Out (CUI-focused)",
-    description:
-      "Built and documented a comprehensive compliance/security program: practice statements, procedures, responsibility matrices, evidence tracking, and remediation planning.",
-    impact: [
-      "Improved audit readiness through structured artifacts and repeatable processes",
-      "Reduced high-risk exposure by prioritizing critical control gaps",
-    ],
-    stack: ["NIST-style controls", "CMMC concepts", "MSSP workflows", "Ticketing/Change Management"],
-    links: [
-      // { label: "Case Study", href: "#" },
-    ],
-  },
-  {
-    title: "Vulnerability Management & Remediation Workflow",
-    description:
-      "Operationalized vulnerability scanning review and remediation triage with severity/likelihood scoring and documented actions.",
-    impact: [
-      "Established consistent triage cadence and tracking",
-      "Accelerated remediation of critical findings",
-    ],
-    stack: ["Vuln Scanning", "CVSS concepts", "Patch Management", "Reporting"],
-    links: [],
-  },
-  // TODO: Add more accomplishments (incident response, cloud security, segmentation, etc.)
-];
-
-const certifications = [
-  // TODO: Replace with your real certifications
-  { name: "(Add Certification)", issuer: "Issuer", year: "YYYY" },
-  { name: "(Add Certification)", issuer: "Issuer", year: "YYYY" },
-];
-
-const publications = [
-  // TODO: Add blog posts, talks, whitepapers
-  {
-    title: "(Add Article or Talk Title)",
-    venue: "Blog / Conference",
-    year: "YYYY",
-    href: "#",
-  },
-];
-
-const skills = [
-  {
-    group: "Security Domains",
-    items: [
-      "Access Control (AC)",
-      "Identification & Authentication (IA)",
-      "Incident Response (IR)",
-      "Vulnerability Management",
-      "Risk Assessment",
-      "Security Assessment & Continuous Monitoring",
-    ],
-    icon: Radar,
-  },
-  {
-    group: "Platforms & Tooling",
-    items: [
-      "Entra ID / Azure AD (hybrid identity)",
-      "Microsoft Intune baselines",
-      "Endpoint Protection & Disk Encryption",
-      "SIEM / SOC workflows",
-      "Firewall / VPN",
-      "Ticketing / Change management",
-    ],
-    icon: Server,
-  },
-  {
-    group: "Governance",
-    items: [
-      "Policy & procedure authoring",
-      "Evidence collection & audit readiness",
-      "Security awareness training support",
-      "Vendor / third-party risk considerations",
-    ],
-    icon: FileText,
-  },
-];
-
-function classNames(...xs) {
-  return xs.filter(Boolean).join(" ");
-}
 
 export default function CybersecurityProfessionalHomepage() {
   const [query, setQuery] = useState("");
@@ -251,31 +66,16 @@ export default function CybersecurityProfessionalHomepage() {
         <div className="mx-auto max-w-6xl px-4 md:px-6 pt-12 md:pt-16 pb-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div className="lg:col-span-7">
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
-                className="text-3xl md:text-5xl font-semibold tracking-tight"
-              >
+              <h1 className="text-3xl md:text-5xl font-semibold tracking-tight">
                 Security outcomes that are measurable, defensible, and built for real-world operations.
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.05 }}
-                className="mt-4 text-base md:text-lg text-slate-700 max-w-2xl"
-              >
+              </h1>
+              <p className="mt-4 text-base md:text-lg text-slate-700 max-w-2xl">
                 I help organizations reduce risk through practical security engineering and governance—hardening
                 systems, improving identity controls, strengthening monitoring, and turning compliance requirements
                 into repeatable processes.
-              </motion.p>
+              </p>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="mt-6 flex flex-wrap gap-2"
-              >
+              <div className="mt-6 flex flex-wrap gap-2">
                 <Pill>
                   <Lock className="h-3.5 w-3.5 mr-1" /> Identity & Access
                 </Pill>
@@ -291,14 +91,9 @@ export default function CybersecurityProfessionalHomepage() {
                 <Pill>
                   <FileText className="h-3.5 w-3.5 mr-1" /> Policies & Evidence
                 </Pill>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.15 }}
-                className="mt-8 flex flex-wrap items-center gap-3"
-              >
+              <div className="mt-8 flex flex-wrap items-center gap-3">
                 {/* TODO: Replace links */}
                 <Button href="#projects">
                   <Rocket className="h-4 w-4" /> View work
@@ -313,7 +108,7 @@ export default function CybersecurityProfessionalHomepage() {
                 >
                   <FileText className="h-4 w-4" /> Download resume <ExternalLink className="h-4 w-4" />
                 </a>
-              </motion.div>
+              </div>
 
               <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-3">
                 {/* TODO: Replace metrics with your real numbers */}
