@@ -137,9 +137,7 @@
 
       /* Layout blocks */
       main{ padding-bottom: 30px; }
-      .hero{
-        padding: 44px 0 18px;
-      }
+      .hero{ padding: 44px 0 18px; }
       .grid{
         display:grid;
         grid-template-columns: 1fr;
@@ -197,9 +195,7 @@
         font-weight: 900;
         font-size: 12px;
       }
-      .dot{
-        width:8px;height:8px;border-radius:999px;background:#10b981;
-      }
+      .dot{ width:8px;height:8px;border-radius:999px;background:#10b981; }
 
       section{ padding: 22px 0; scroll-margin-top: 90px; }
       .sectionHead h2{
@@ -228,6 +224,7 @@
         gap: 12px;
         margin-top: 14px;
       }
+
       .list{
         margin: 12px 0 0;
         padding: 0;
@@ -255,25 +252,6 @@
 
       .tagRow{ margin-top: 12px; display:flex; flex-wrap:wrap; gap:8px; }
 
-      /* Search */
-      .searchBar{
-        margin-top: 14px;
-        display:flex;
-        align-items:center;
-        gap:10px;
-        border:1px solid var(--border);
-        background:#fff;
-        border-radius: var(--radius2);
-        padding: 10px 12px;
-        box-shadow: var(--shadow2);
-      }
-      .searchBar input{
-        border:none;
-        outline:none;
-        width:100%;
-        font-size: 14px;
-      }
-
       /* Footer */
       footer{
         border-top:1px solid rgba(226,232,240,.9);
@@ -297,6 +275,40 @@
         .two{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
         .footRow{ flex-direction:row; align-items:center; justify-content:space-between; }
       }
+
+      /* ===========================
+         Impact layout + polish
+         =========================== */
+      .impactGrid{
+        display:grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 14px;
+      }
+      @media (min-width: 900px){
+        .impactGrid{
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+      .impactIcon{
+        width: 34px;
+        height: 34px;
+        display:inline-flex;
+        align-items:center;
+        justify-content:center;
+        border-radius: 12px;
+        background:#f8fafc;
+        border:1px solid var(--border);
+        box-shadow: var(--shadow2);
+        flex: 0 0 34px;
+        font-size: 16px;
+      }
+      .card.pad{
+        transition: transform .12s ease;
+      }
+      .card.pad:hover{
+        transform: translateY(-1px);
+      }
     </style>
   </head>
 
@@ -308,7 +320,7 @@
             <div class="logo">🛡️</div>
             <div class="brandTitle">
               <strong>Brian Beals</strong>
-              <span>Cybersecurity • Security Engineering • GRC • Leadership </span>
+              <span>Cybersecurity • Security Engineering • GRC • Leadership</span>
             </div>
           </div>
 
@@ -353,12 +365,12 @@
               <div class="ctaRow">
                 <a class="btn primary" href="#projects">🚀 View work</a>
                 <a class="btn secondary" href="mailto:bbeals@digitalarmourpartners.com">💼 Hiring inquiries</a>
-                <!-- TODO: Replace with a real resume URL -->
-                <a class="btn ghost" href="assets/Beals_Brian_Resume.pdf" target="_blank" rel="noopener noreferrer" download> 📄 Download resume ↗ </a>
+                <a class="btn ghost" href="assets/Beals_Brian_Resume.pdf" target="_blank" rel="noopener noreferrer" download>
+                  📄 Download resume ↗
+                </a>
               </div>
-              
+
               <div class="metrics" aria-label="Key metrics">
-                <!-- TODO: Update these with real numbers -->
                 <div class="metric"><div class="v">18+</div><div class="l">Control domains covered</div></div>
                 <div class="metric"><div class="v">2000+</div><div class="l">Security artifacts authored</div></div>
                 <div class="metric"><div class="v">1000+</div><div class="l">Tooling integrations</div></div>
@@ -394,13 +406,9 @@
                 </div>
 
                 <div class="ctaRow" style="margin-top:14px;">
-                  <!-- TODO: Replace with real URLs -->
-                  <a class="btn ghost"href="https://www.linkedin.com/in/brian-b-2b7934178/"target="_blank"rel="noopener noreferrer"> LinkedIn</a>
+                  <a class="btn ghost" href="https://www.linkedin.com/in/brian-b-2b7934178/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                   <a class="btn ghost" href="#" onclick="event.preventDefault(); alert('Add GitHub URL');">&lt;&gt; GitHub</a>
                 </div>
-
-                <p style="margin:12px 0 0;color:#64748b;font-size:12px;">
-                </p>
               </div>
             </div>
           </div>
@@ -443,75 +451,74 @@
           </div>
         </section>
 
-<!-- IMPACT -->
-<section id="impact">
-  <div class="sectionHead">
-    <h2>Impact</h2>
-    <p>
-      How I apply audit discipline and operational risk thinking to build
-      security programs that are both effective and defensible.
-    </p>
-  </div>
+        <!-- IMPACT -->
+        <section id="impact">
+          <div class="sectionHead">
+            <h2>Impact</h2>
+            <p>
+              How I apply audit discipline and operational risk thinking to build
+              security programs that are both effective and defensible.
+            </p>
+          </div>
 
-  <div class="three">
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🧾</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">Audit-minded delivery</div>
-          <p style="margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
-            I come from an audit background, so I build security with “proof” in mind—what the requirement is,
-            what evidence demonstrates it, who owns it, and how it’s reviewed over time. If we can’t show it,
-            we don’t truly have it.
-          </p>
-        </div>
-      </div>
-    </div>
+          <div class="impactGrid">
+            <div class="card pad">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span class="impactIcon">🧾</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">Audit-minded delivery</div>
+                  <p style="margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
+                    I come from an audit background, so I build security with “proof” in mind—what the requirement is,
+                    what evidence demonstrates it, who owns it, and how it’s reviewed over time. If we can’t show it,
+                    we don’t truly have it.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🎖️</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">Risk calculation under real constraints</div>
-          <p style="margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
-            My military background trained me to evaluate risk clearly and consistently—likelihood, impact,
-            and mission effect—then communicate that risk in plain language leadership can act on.
-          </p>
-        </div>
-      </div>
-    </div>
+            <div class="card pad">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span class="impactIcon">🎖️</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">Risk calculation under real constraints</div>
+                  <p style="margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
+                    My military background trained me to evaluate risk clearly and consistently—likelihood, impact,
+                    and mission effect—then communicate that risk in plain language leadership can act on.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🛠️</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">Engineer the mitigation path</div>
-          <p style="margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
-            I translate risk decisions into practical solutions: prioritize the highest exposures first,
-            design a realistic remediation plan, implement controls, and keep evidence current—so security
-            improves and stays defensible.
-          </p>
-        </div>
-      </div>
-    </div>
+            <div class="card pad">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span class="impactIcon">🛠️</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">Engineer the mitigation path</div>
+                  <p style="margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
+                    I translate risk decisions into practical solutions: prioritize the highest exposures first,
+                    design a realistic remediation plan, implement controls, and keep evidence current—so security
+                    improves and stays defensible.
+                  </p>
+                </div>
+              </div>
+            </div>
 
-    <!-- ✅ Add this 4th card INSIDE the grid -->
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🤝</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">Security that works across people</div>
-          <p style="margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
-            My military background put me in environments with diverse teams, high pressure, and competing priorities.
-            That experience sharpened my ability to read the room, establish rapport quickly, and communicate security
-            expectations in a way that resonates with technical staff, leadership, and non-technical stakeholders alike.
-            This is critical to making security controls actually stick.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="card pad">
+              <div style="display:flex;gap:12px;align-items:flex-start;">
+                <span class="impactIcon">🤝</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">Security that works across people</div>
+                  <p style="margin:8px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
+                    My military background put me in environments with diverse teams, high pressure, and competing priorities.
+                    That experience sharpened my ability to read the room, establish rapport quickly, and communicate security
+                    expectations in a way that resonates with technical staff, leadership, and non-technical stakeholders alike.
+                    This is critical to making security controls actually stick.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <!-- EXPERIENCE -->
         <section id="experience">
@@ -544,61 +551,45 @@
               <li><span class="icon">✅</span><span>Partnered with stakeholders (IT, leadership, vendors) to implement MFA, least privilege, logging/monitoring, and hardened baselines.</span></li>
             </ul>
 
-            <p style="margin:12px 0 0;color:#64748b;font-size:12px;">
-              TODO: Add prior roles here.
-            </p>
+            <p style="margin:12px 0 0;color:#64748b;font-size:12px;">TODO: Add prior roles here.</p>
           </div>
         </section>
 
         <!-- PROJECTS -->
         <section id="projects">
-  <div class="sectionHead">
-    <h2>Projects</h2>
-    <p>
-      Representative examples of security programs and initiatives I’ve led,
-      described at a level appropriate for public review.
-    </p>
-  </div>
+          <div class="sectionHead">
+            <h2>Projects</h2>
+            <p>
+              Representative examples of security programs and initiatives I’ve led,
+              described at a level appropriate for public review.
+            </p>
+          </div>
 
-  <div class="two" style="margin-top:14px;">
-    <div class="card pad2">
-      <div style="font-weight:900;font-size:15px;">
-        Enterprise Security Program Build-Out
-      </div>
+          <div class="two" style="margin-top:14px;">
+            <div class="card pad2">
+              <div style="font-weight:900;font-size:15px;">Enterprise Security Program Build-Out</div>
 
-      <p style="margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
-        Brought an organization from informal security practices to a documented,
-        auditable program aligned to modern compliance and risk expectations.
-      </p>
+              <p style="margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.5;">
+                Brought an organization from informal security practices to a documented,
+                auditable program aligned to modern compliance and risk expectations.
+              </p>
 
-      <ul class="list" style="margin-top:12px;">
-        <li>
-          <span class="icon">›</span>
-          <span>Designed access control, incident response, and vulnerability management procedures</span>
-        </li>
-        <li>
-          <span class="icon">›</span>
-          <span>Established evidence mapping and review cadence tied to operational owners</span>
-        </li>
-        <li>
-          <span class="icon">›</span>
-          <span>Prioritized remediation of high-risk gaps such as MFA and insecure remote access</span>
-        </li>
-        <li>
-          <span class="icon">›</span>
-          <span>Enabled leadership to demonstrate security posture without ad-hoc effort</span>
-        </li>
-      </ul>
+              <ul class="list" style="margin-top:12px;">
+                <li><span class="icon">›</span><span>Designed access control, incident response, and vulnerability management procedures</span></li>
+                <li><span class="icon">›</span><span>Established evidence mapping and review cadence tied to operational owners</span></li>
+                <li><span class="icon">›</span><span>Prioritized remediation of high-risk gaps such as MFA and insecure remote access</span></li>
+                <li><span class="icon">›</span><span>Enabled leadership to demonstrate security posture without ad-hoc effort</span></li>
+              </ul>
 
-      <div class="tagRow" style="margin-top:12px;">
-        <span class="chip">IAM</span>
-        <span class="chip">GRC</span>
-        <span class="chip">Risk</span>
-        <span class="chip">Audit Readiness</span>
-      </div>
-    </div>
-  </div>
-</section>
+              <div class="tagRow" style="margin-top:12px;">
+                <span class="chip">IAM</span>
+                <span class="chip">GRC</span>
+                <span class="chip">Risk</span>
+                <span class="chip">Audit Readiness</span>
+              </div>
+            </div>
+          </div>
+        </section>
 
         <!-- SKILLS -->
         <section id="skills">
@@ -652,101 +643,105 @@
         </section>
 
         <!-- CERTIFICATIONS -->
-<section id="certifications">
-  <div class="sectionHead">
-    <h2>Certifications</h2>
-  </div>
+        <section id="certifications">
+          <div class="sectionHead"><h2>Certifications</h2></div>
 
-  <div class="two" style="margin-top:14px;">
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🏅</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">CISSP</div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px;">ISC2 • Current</div>
-        </div>
-      </div>
-    </div>
+          <div class="two" style="margin-top:14px;">
+            <div class="card pad">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <span class="icon">🏅</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">CISSP</div>
+                  <div style="margin-top:6px;color:var(--muted);font-size:13px;">ISC2 • Current</div>
+                </div>
+              </div>
+            </div>
 
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🏅</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">CISA</div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px;">ISACA • Current</div>
-        </div>
-      </div>
-    </div>
+            <div class="card pad">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <span class="icon">🏅</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">CISA</div>
+                  <div style="margin-top:6px;color:var(--muted);font-size:13px;">ISACA • Current</div>
+                </div>
+              </div>
+            </div>
 
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🏅</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">CySA+</div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px;">CompTIA • Current</div>
-        </div>
-      </div>
-    </div>
+            <div class="card pad">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <span class="icon">🏅</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">CySA+</div>
+                  <div style="margin-top:6px;color:var(--muted);font-size:13px;">CompTIA • Current</div>
+                </div>
+              </div>
+            </div>
 
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🏅</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">PenTest+</div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px;">CompTIA • Current</div>
-        </div>
-      </div>
-    </div>
+            <div class="card pad">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <span class="icon">🏅</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">PenTest+</div>
+                  <div style="margin-top:6px;color:var(--muted);font-size:13px;">CompTIA • Current</div>
+                </div>
+              </div>
+            </div>
 
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🏅</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">Security+</div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px;">CompTIA • Current</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-  <div class="sectionHead">
-    <h2>Education</h2>
-  </div>
-
-  <div class="two" style="margin-top:14px;">
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🎓</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">
-            Master of Science, Cybersecurity and Information Assurance
+            <div class="card pad">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <span class="icon">🏅</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">Security+</div>
+                  <div style="margin-top:6px;color:var(--muted);font-size:13px;">CompTIA • Current</div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px;">
-            Western Governors University • 2025
+        </section>
+
+        <!-- EDUCATION -->
+        <section id="education">
+          <div class="sectionHead"><h2>Education</h2></div>
+
+          <div class="two" style="margin-top:14px;">
+            <div class="card pad">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <span class="icon">🎓</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">Master of Science, Cybersecurity and Information Assurance</div>
+                  <div style="margin-top:6px;color:var(--muted);font-size:13px;">Western Governors University • 2025</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card pad">
+              <div style="display:flex;gap:10px;align-items:center;">
+                <span class="icon">🎓</span>
+                <div>
+                  <div style="font-weight:900;font-size:13px;">Bachelor of Science, Cybersecurity</div>
+                  <div style="margin-top:6px;color:var(--muted);font-size:13px;">American Military University • 2024</div>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <p style="margin-top:10px;color:#64748b;font-size:12px;">Degree verification is available upon request.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <div class="footRow">
+          <div>© <span id="year"></span> Brian Beals. All rights reserved.</div>
+          <div>Built with a clean, professional portfolio layout.</div>
         </div>
       </div>
-    </div>
+    </footer>
 
-    <div class="card pad">
-      <div style="display:flex;gap:10px;align-items:center;">
-        <span class="icon">🎓</span>
-        <div>
-          <div style="font-weight:900;font-size:13px;">
-            Bachelor of Science, Cybersecurity
-          </div>
-          <div style="margin-top:6px;color:var(--muted);font-size:13px;">
-            American Military University • 2024
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <p style="margin-top:10px;color:#64748b;font-size:12px;">
-    Degree verification is available upon request.
-  </p>
-</section>
+    <script>
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
